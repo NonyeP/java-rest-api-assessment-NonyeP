@@ -33,7 +33,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
+
    <!--Added Spring Data JPA (SQL)
 Persist data in SQL which stores with Java Persistence API using Spring Data and Hibernate dependency-->
         <dependency>
@@ -50,7 +50,38 @@ Provides a fast in-memory database that supports JDBC API and R2DBC access, with
 			<scope>runtime</scope>
 		</dependency>
 		
+	<!--Added jackson dependency to read from json file
+Provides a fast in-memory database that supports JDBC API and R2DBC access, with a small (2mb) footprint.
+ Supports embedded and server modes as well as a browser based console application.-->
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-xml</artifactId>
+		</dependency>
 
+    <!--Added validation dependency-->
+        <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+
+
+	<!--Added actuator to give full list of bean dependency-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		
+		<!--Added hateoas dependency to expose links-->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-rest-hal-explorer</artifactId>
+		</dependency>
+		
+		<!--add hateoas to create a link or interaction to a web page -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-hateoas</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

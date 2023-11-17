@@ -4,7 +4,10 @@ import java.time.LocalDateTime;
 
 /* This class is designed to log Error details that includes the date and 
  * time the error occurs the message and its details that will arise while
- * running the project
+ * running the project.
+ * 
+ * This class have methods that gets and sets date and time of error, the 
+ * error message and its details.
  */
 
 public class ErrorDetailsInProject {
