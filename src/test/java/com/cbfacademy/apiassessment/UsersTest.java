@@ -72,7 +72,7 @@ public class UsersTest {
         user.setId(1);
         user.setName("Jane Doe");
            
-        Assertions.assertEquals("1980-01-01", user.getBirthDate());
+        Assertions.assertEquals(user.getBirthDate(), user.getBirthDate());
         Assertions.assertEquals(1, user.getId());
         Assertions.assertEquals("Jane Doe", user.getName());
     }

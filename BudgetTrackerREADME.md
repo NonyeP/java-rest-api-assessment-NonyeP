@@ -43,9 +43,6 @@ This Budget Tracker is a Spring Boot-based RESTful API that enables users to man
 - Apache Maven for building the application.
 - Your favorite REST API client (e.g. Talend, Postman) for testing API endpoints. 
 
-# Demo
-Currency converter screenshot
-> [src/](https://github.com/NonyeP/Currency-Converter/blob/main/src/converter/currencyconverter.png)
 
 # Installation Guide
 Before installing the currency converter ensure you have :
