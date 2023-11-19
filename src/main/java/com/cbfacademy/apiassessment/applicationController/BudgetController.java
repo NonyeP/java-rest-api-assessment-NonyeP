@@ -43,13 +43,13 @@ public class BudgetController {
 		this.service = service;
 	}
 	
-	@GetMapping("/items-budget")
+	@GetMapping("/budgets")
 	public List<Budget> retrieveAllBudget(){
 		return service.getAllBudget();
 		
 	}
 
-	@GetMapping("/items-budget/{id}")
+	@GetMapping("/budgets/{id}")
 	public EntityModel<Budget> retrieveItem(@PathVariable long id){
 		Budget item = service.findOne(id);
 		
@@ -64,7 +64,7 @@ public class BudgetController {
 	}
 	
 	
-	@PostMapping("/items-budget")
+	@PostMapping("/budgets")
 	public ResponseEntity<Budget> createUser(@Valid @RequestBody Budget items){
 		Budget savedItem = service.createBudget(items);
 		
@@ -75,7 +75,7 @@ public class BudgetController {
 		return ResponseEntity.created(null).build();
 	}
 	
-	@DeleteMapping("/items-budget/{id}")
+	@DeleteMapping("/budgets/{id}")
 	public void deleteitem(@PathVariable long id){
 		Budget user = service.findOne(id);  
 		
@@ -86,7 +86,7 @@ public class BudgetController {
 	}
 
     
-    @GetMapping("/budgetdate/{date}")
+    @GetMapping("/budgets/{date}")
 	public EntityModel<Budget> retrieveBudget(@PathVariable LocalDate date){
 		/*
 		 * This method returns an EntityModel wrapping a domain object and adding links to it.
@@ -103,7 +103,7 @@ public class BudgetController {
 		return entityModel;
     }
 
-    @PutMapping("/items-budget/{category}")
+    @PutMapping("/budgets/{category}")
 	public ResponseEntity<Budget> updateBudgetByCategory(@PathVariable String category,@Valid @RequestBody Budget budgetUpdated) {
 		   Budget budget = service.updateBudgetByCategory(category,budgetUpdated);
 		   if(budget == null)
