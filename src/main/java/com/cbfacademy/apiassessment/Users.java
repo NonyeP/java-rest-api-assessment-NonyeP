@@ -59,8 +59,7 @@ public class Users implements UUIDGenerator{
 
     @Override
     public int insertUserId(UUID id, Users user) {
-        String uuid = id.toString();
-		return Integer.valueOf(uuid);
+		return id.hashCode();
     }
 
     
