@@ -1,4 +1,4 @@
-package com.cbfacademy.apiassessment;
+package com.cbfacademy.apiassessment.applicationController;
 
 import java.net.URI;
 import java.util.List;
@@ -15,9 +15,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.cbfacademy.apiassessment.applicationDAO.UsersDAOService;
+import com.cbfacademy.apiassessment.applicationModel.Users;
+import com.cbfacademy.apiassessment.exceptionHandlers.UserNotFoundException;
+
 import jakarta.validation.Valid;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
+
+
+/*
+ * This userController class responsible for processing incoming REST API requests, 
+ * preparing a model, and returning the view to be rendered as a response
+ */
+
+
+
 
 @RestController
 public class UsersController {
@@ -36,31 +49,40 @@ public class UsersController {
 
     @GetMapping("/users/{id}")
 	public EntityModel<Users> retrieveUser(@PathVariable int id){
+		/*
+		 * This method returns an EntityModel wrapping a domain object and adding links to it.
+		 * We use static MVC(a builder) to add a link to a specific method. we do not hard code link 
+		 */
 		Users user = service.findUser(id);
 		
 		if(user == null)
 			throw new UserNotFoundException("id:" + id);
-		EntityModel<Users> entityModel = EntityModel.of(user);//static wrapped the user class 
-		//and creating the entity object
-		WebMvcLinkBuilder link = linkTo(methodOn(this.getClass()).retrieveAllUsers());// use static MVC(a builder) to add a link to a specific method. do not hard code link 
+		EntityModel<Users> entityModel = EntityModel.of(user);
+	
+		WebMvcLinkBuilder link = linkTo(methodOn(this.getClass()).retrieveAllUsers());// 
 		entityModel.add(link.withRel("all-users"));//in case link changes in future
 		return entityModel;
     }
 
     @PostMapping("/users")
 	public ResponseEntity<Users> createUser(@Valid @RequestBody Users user){
+		/*
+		 *The URI location sets the url of the user and id 
+		 *replaced by new created id to return in addition to the
+		 *response the url of the newly created user
+		 */
 		Users savedUser = service.saveUser(user);
-		//location = sets the url of the user
+		
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}")
-				.buildAndExpand(savedUser.getId())//id replaced by new created id to return in addition to the response the url of the newly created user
+				.buildAndExpand(savedUser.getId())//
 				.toUri();
 		return ResponseEntity.created(null).build();
 	}
 	
 	@DeleteMapping("/users/{id}")
 	public void deleteUser(@PathVariable int id){
-		Users user = service.findUser(id);  //you may delete this line and just call service.delete
+		Users user = service.findUser(id);  
 		
 		if(user == null)
 			throw new UserNotFoundException("id:");

@@ -1,4 +1,4 @@
-package com.cbfacademy.apiassessment;
+package com.cbfacademy.apiassessment.applicationDAO;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.function.Predicate;
 
 import org.springframework.stereotype.Component;
+
+import com.cbfacademy.apiassessment.applicationModel.Users;
 
 /*
  * UserDAOServices talks to a static list

@@ -1,4 +1,4 @@
-package com.cbfacademy.apiassessment;
+package com.cbfacademy.apiassessment.exceptionHandlers;
 
 import java.time.LocalDateTime;
 

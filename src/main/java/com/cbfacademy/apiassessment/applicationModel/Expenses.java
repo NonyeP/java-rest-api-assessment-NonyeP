@@ -1,4 +1,4 @@
-package com.cbfacademy.apiassessment;
+package com.cbfacademy.apiassessment.applicationModel;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -29,6 +29,7 @@ public class Expenses {
 	private String category;
 	private String title;
     private Integer id;
+	private Users user;
     
 
     public Expenses(Integer id, String title, String expenseDescription, String category, BigDecimal amount, LocalDate date) {

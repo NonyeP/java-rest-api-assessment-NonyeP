@@ -1,4 +1,4 @@
-package com.cbfacademy.apiassessment;
+package com.cbfacademy.apiassessment.applicationModel;
 
 import java.time.LocalDate;
 import java.util.UUID;
