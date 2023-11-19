@@ -1,5 +1,6 @@
 package com.cbfacademy.apiassessment.exceptionHandlers;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /* This class is designed to log Error details that includes the date and 
@@ -14,6 +15,7 @@ public class ErrorDetailsInProject {
     private LocalDateTime dateTime;
     private String errorMessage;
     private String errorDetails;
+   
     
     
     public ErrorDetailsInProject(LocalDateTime dateTime, String errorMessage, String errorDetails) {

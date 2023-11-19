@@ -1,7 +1,9 @@
 package com.cbfacademy.apiassessment.applicationController;
 
 import java.net.URI;
+import java.time.LocalDate;
 import java.util.List;
+
 
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
@@ -10,12 +12,16 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.cbfacademy.apiassessment.applicationDAO.BudgetDAOService;
 import com.cbfacademy.apiassessment.applicationModel.Budget;
+
+import com.cbfacademy.apiassessment.exceptionHandlers.BudgetNotFoundException;
 import com.cbfacademy.apiassessment.exceptionHandlers.UserNotFoundException;
 
 import jakarta.validation.Valid;
@@ -79,5 +85,32 @@ public class BudgetController {
 		
 	}
 
+    
+    @GetMapping("/budgetdate/{date}")
+	public EntityModel<Budget> retrieveBudget(@PathVariable LocalDate date){
+		/*
+		 * This method returns an EntityModel wrapping a domain object and adding links to it.
+		 * We use static MVC(a builder) to add a link to a specific method. we do not hard code link 
+		 */
+		Budget budget = service.findBudgetByDate(date);
+		
+		if(budget == null)
+			throw new BudgetNotFoundException("date:" + date);
+		EntityModel<Budget> entityModel = EntityModel.of(budget);
+	
+		WebMvcLinkBuilder link = linkTo(methodOn(this.getClass()).retrieveAllBudget());// 
+		entityModel.add(link.withRel("all-users"));//in case link changes in future
+		return entityModel;
+    }
+
+    @PutMapping("/items-budget/{category}")
+	public ResponseEntity<Budget> updateBudgetByCategory(@PathVariable String category,@Valid @RequestBody Budget budgetUpdated) {
+		   Budget budget = service.updateBudgetByCategory(category,budgetUpdated);
+		   if(budget == null)
+		   throw new BudgetNotFoundException("category:");
+	     return ResponseEntity.ok(budget);
+	         	
+	}
+    
     
 }
