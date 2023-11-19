@@ -50,12 +50,17 @@ Provides a fast in-memory database that supports JDBC API and R2DBC access, with
 			<scope>runtime</scope>
 		</dependency>
 		
-	<!--Added jackson dependency to read from json file
-Provides a fast in-memory database that supports JDBC API and R2DBC access, with a small (2mb) footprint.
- Supports embedded and server modes as well as a browser based console application.-->
+	<!--Added jackson dependency for content negiotiation support
 		<dependency>
 			<groupId>com.fasterxml.jackson.dataformat</groupId>
 			<artifactId>jackson-dataformat-xml</artifactId>
+		</dependency>
+		-->
+		
+		<!--Added jackson dependency for reading j-son file support-->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
 		</dependency>
 
     <!--Added validation dependency-->

@@ -24,15 +24,15 @@ public class Budget {
 
     @Future(message = "Date should be in the past")
     private LocalDate date;
-    private String budgetDescription;
+    private String budgetCategory;
     private Integer id;
 
 
 
-    public Budget(Integer id, LocalDate date, String budgetDescription, BigDecimal amount) {
+    public Budget(Integer id, LocalDate date, String budgetCategory, BigDecimal amount) {
         this.amount = amount;
         this.date = date;
-        this.budgetDescription = budgetDescription;
+        this.budgetCategory = budgetCategory;
         this.id = id;
     }
 
@@ -56,12 +56,12 @@ public class Budget {
         this.date = date;
     }
 
-    public String getBudgetDescription() {
-        return budgetDescription;
+    public String getBudgetCategory() {
+        return budgetCategory;
     }
 
-    public void setBudgetDescription(String budgetDescription) {
-        this.budgetDescription = budgetDescription;
+    public void setBudgetCategory(String budgetCategory) {
+        this.budgetCategory = budgetCategory;
     }
 
     public Integer getId() {
@@ -73,8 +73,7 @@ public class Budget {
 
     @Override
     public String toString() {
-        return "Budget [amount=" + amount + ", date=" + date + ", budgetDescription=" + budgetDescription + ", id="
-                + id + "]";
+        return "Budget [id=" + id + ", budgetCategory=" + budgetCategory + ", amount=" + amount + "]";
     }
 
     
