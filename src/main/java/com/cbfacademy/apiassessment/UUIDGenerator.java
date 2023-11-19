@@ -2,6 +2,10 @@ package com.cbfacademy.apiassessment;
 
 import java.util.UUID;
 
+/*
+ * This is an interface that generates id
+ */
+
 public interface UUIDGenerator {
 
     int insertUserId(UUID id, Users user);

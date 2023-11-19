@@ -6,6 +6,11 @@ import java.util.UUID;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 
+/*
+ * This class creates users satisfies the inheritance criteria for the project by implementing the
+ * insertUserId() method that enables a user to manually assign id
+ */
+
 public class Users implements UUIDGenerator{
 
     private Integer id;
